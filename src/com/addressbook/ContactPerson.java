@@ -1,14 +1,14 @@
 package com.addressbook;
 
 public class ContactPerson {
-    private String first_name;
-    private String last_name;
-    private String address;
-    private String city;
-    private String state;
-    private int zip;
-    private long phone_number;
-    private String email;
+    public String first_name;
+    public String last_name;
+    public String address;
+    public String city;
+    public String state;
+    public int zip;
+    public long phone_number;
+    public String email;
 
    public ContactPerson(String first_name, String last_name, String address, String city, String state, int zip, long phone_number, String email) {
         this.first_name = first_name;
@@ -24,6 +24,7 @@ public class ContactPerson {
     public String toString() {
         return "ContactPerson{"+"first_name='" + first_name + '\'' + ", last_name='" + last_name + '\'' + ", address='" + address + '\'' + ", city='" + city + '\'' + ", state='" + state + '\'' + ", zip=" + zip + ", phone_number=" + phone_number + ", email='" + email + '\'' + '}';
     }
+
 }
 
 
