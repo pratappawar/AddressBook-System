@@ -10,7 +10,7 @@ public class ContactPerson {
     public long phone_number;
     public String email;
 
-   public ContactPerson(String first_name, String last_name, String address, String city, String state, int zip, long phone_number, String email) {
+    public ContactPerson(String first_name, String last_name, String address, String city, String state, int zip, long phone_number, String email) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.address = address;
@@ -22,7 +22,7 @@ public class ContactPerson {
     }
 
     public String toString() {
-        return "ContactPerson{"+"first_name='" + first_name + '\'' + ", last_name='" + last_name + '\'' + ", address='" + address + '\'' + ", city='" + city + '\'' + ", state='" + state + '\'' + ", zip=" + zip + ", phone_number=" + phone_number + ", email='" + email + '\'' + '}';
+        return "ContactPerson{" + "first_name='" + first_name + '\'' + ", last_name='" + last_name + '\'' + ", address='" + address + '\'' + ", city='" + city + '\'' + ", state='" + state + '\'' + ", zip=" + zip + ", phone_number=" + phone_number + ", email='" + email + '\'' + '}';
     }
 
 }

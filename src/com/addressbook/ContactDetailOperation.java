@@ -1,6 +1,7 @@
 package com.addressbook;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class ContactDetailOperation {
@@ -11,15 +12,15 @@ public class ContactDetailOperation {
     public void addContact() {
         //taking Contact details from user
         System.out.println("First name");
-        String First_name = scan.nextLine();
+        String First_name = scan.next();
         System.out.println("Last Name");
-        String last_name = scan.nextLine();
+        String last_name = scan.next();
         System.out.println("Address");
-        String address = scan.nextLine();
+        String address = scan.next();
         System.out.println("State");
-        String state = scan.nextLine();
+        String state = scan.next();
         System.out.println("city");
-        String city = scan.nextLine();
+        String city = scan.next();
         System.out.println("Zip");
         int zip = scan.nextInt();
         System.out.println("PhoneNo");
@@ -37,6 +38,7 @@ public class ContactDetailOperation {
         }
     }
 
+    //edit contact method called from main method
     public void editContact() {
         System.out.println("Enter the name you want to edit:");
         String enteredName = scan.next();
@@ -46,7 +48,7 @@ public class ContactDetailOperation {
                 flag = true;
                 System.out.println("1. First Name\n" + "2.Last Name\n" + "3.Address\n" + "4.city\n" + "5.State\n" + "6.zip\n" + "7.phoneNumber\n" + "8.email");
                 int choice = scan.nextInt();
-
+                //choices for edit contact
                 switch (choice) {
 
                     case 1:
@@ -102,22 +104,30 @@ public class ContactDetailOperation {
 
     }
 
-    public void dispalyContact() {
-        int i = 1;
-        for (ContactPerson cp : contact) {
-            System.out.println("Person : " + i);
-            System.out.println("First Name : " + cp.first_name);
-            System.out.println("Last Name : " + cp.last_name);
-            System.out.println("Address : " + cp.address);
-            System.out.println("State: " + cp.state);
-            System.out.println("city: " + cp.city);
-            System.out.println("zip : " + cp.zip);
-            System.out.println("phone number : " + cp.phone_number);
-            System.out.println("Email : " + cp.email);
-            i++;
+    public void deleteContact() {
+        System.out.println("Enter name wants to delete:");
+        String firstName = scan.next();
+        boolean flag = false;
+        for (ContactPerson person : contact) {
+            if (person.first_name.equals(firstName)) {
+                flag = true;
+                contact.remove(person);
+            }
+        }
+        if (flag == false) {
+            System.out.println("Name not found");
         }
     }
 
+    public void dispalyContact() {
+        int i = 1;
+        for (ContactPerson cp : contact) {
+            for (String s : Arrays.asList("Person : " + i, "First Name : " + cp.first_name, "Last Name : " + cp.last_name, "Address : " + cp.address, "State: " + cp.state, "city: " + cp.city, "zip : " + cp.zip, "phone number : " + cp.phone_number, "Email : " + cp.email)) {
+                System.out.println(s);
+            }
+            i++;
+        }
+    }
 }
 
 
