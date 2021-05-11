@@ -1,14 +1,12 @@
 package com.addressbook;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class ContactDetailOperation {
 
     ArrayList<ContactPerson> contact = new ArrayList<ContactPerson>();
     static Scanner scan = new Scanner(System.in);
-
+    //add contact in arraylist
     public void addContact() {
         //taking Contact details from user
         System.out.println("First name");
@@ -32,12 +30,13 @@ public class ContactDetailOperation {
         ContactPerson person = new ContactPerson(First_name, last_name, address, city, state, zip, phone_number, email);
         //Adding object element in arrayList
         contact.add(person);
-        //displaying ArrayList Content
+    }
+    //show contact details
+    public void showDetails(){
         for (int i = 0; i < contact.size(); i++) {
             System.out.println(contact.get(i));
         }
     }
-
     //edit contact method called from main method
     public void editContact() {
         System.out.println("Enter the name you want to edit:");
@@ -48,7 +47,7 @@ public class ContactDetailOperation {
                 flag = true;
                 System.out.println("1. First Name\n" + "2.Last Name\n" + "3.Address\n" + "4.city\n" + "5.State\n" + "6.zip\n" + "7.phoneNumber\n" + "8.email");
                 int choice = scan.nextInt();
-                //choices for edit contact
+
                 switch (choice) {
 
                     case 1:
@@ -99,11 +98,9 @@ public class ContactDetailOperation {
         }
         if (flag == false) {
             System.out.println(enteredName + " Not Found!");
-
         }
-
     }
-
+    //contact delete method to delete the contact
     public void deleteContact() {
         System.out.println("Enter name wants to delete:");
         String firstName = scan.next();
@@ -119,15 +116,6 @@ public class ContactDetailOperation {
         }
     }
 
-    public void dispalyContact() {
-        int i = 1;
-        for (ContactPerson cp : contact) {
-            for (String s : Arrays.asList("Person : " + i, "First Name : " + cp.first_name, "Last Name : " + cp.last_name, "Address : " + cp.address, "State: " + cp.state, "city: " + cp.city, "zip : " + cp.zip, "phone number : " + cp.phone_number, "Email : " + cp.email)) {
-                System.out.println(s);
-            }
-            i++;
-        }
-    }
 }
 
 

@@ -17,17 +17,21 @@ public class AddressBookMain {
             switch (choice) {
                 case 1:
                     contactDetail.addContact();
+                    contactDetail.showDetails();
                     System.out.println("Contact Added Successfully!");
+                    System.out.println("-----------------------------");
                     break;
                 case 2:
                     contactDetail.editContact();
-                    contactDetail.dispalyContact();
+                    contactDetail.showDetails();
                     System.out.println("Contact edited Successfully");
+                    System.out.println("-----------------------------");
                     break;
                 case 3:
                     contactDetail.deleteContact();
-                    contactDetail.dispalyContact();
+                    contactDetail.showDetails();
                     System.out.println("Contact Deleted Successfully");
+                    System.out.println("-----------------------------");
                     break;
                 default:
                     System.out.println("Please Enter Valid Choice:");
