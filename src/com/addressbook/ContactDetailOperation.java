@@ -1,15 +1,16 @@
 package com.addressbook;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class ContactDetailOperation {
-    static Scanner scan = new Scanner(System.in);
     //add contact in arraylist
     public static ArrayList<ContactPerson> contact = new ArrayList<ContactPerson>();
+    static Scanner scan = new Scanner(System.in);
+    public ContactDetailOperation value;
 
-    //------------------------Adding Contact-----------------------------------//
+    /**
+     * Adding contact in address book
+     */
     public void addContact() {
         //taking Contact details from user
         System.out.println("First name");
@@ -34,19 +35,25 @@ public class ContactDetailOperation {
         //Adding object element in arrayList
         contact.add(person);
     }
-    //show contact details
+
+    /**
+     * show contact details
+     */
     public void showDetails(){
         for (int i = 0; i < contact.size(); i++) {
             System.out.println(contact.get(i));
         }
     }
-    //edit contact method called from main method
+
+    /**
+     * edit contact method called from main method
+     */
     public void editContact() {
         System.out.println("Enter the name you want to edit:");
         String enteredName = scan.next();
         boolean flag = false;
         for (ContactPerson person : contact) {
-            if (person.first_name.equals(enteredName)) {
+            if (person.getFirst_name().equals(enteredName)) {
                 flag = true;
                 System.out.println("1. First Name\n" + "2.Last Name\n" + "3.Address\n" + "4.city\n" + "5.State\n" + "6.zip\n" + "7.phoneNumber\n" + "8.email");
                 System.out.println("Enter your choice:");
@@ -57,42 +64,42 @@ public class ContactDetailOperation {
                     case 1:
                         System.out.println("Enter First Name : ");
                         String firstName = scan.next();
-                        person.first_name = firstName;
+                        person.setFirst_name(firstName);
                         break;
                     case 2:
                         System.out.println("Enter First Name : ");
                         String lastName = scan.next();
-                        person.last_name = lastName;
+                        person.setLast_name(lastName);
                         break;
                     case 3:
                         System.out.println("Enter Address : ");
                         String newAddress = scan.next();
-                        person.address = newAddress;
+                        person.setAddress(newAddress);
                         break;
                     case 4:
                         System.out.println("Enter city : ");
                         String newCity = scan.next();
-                        person.city = newCity;
+                        person.setCity(newCity);
                         break;
                     case 5:
-                        System.out.println("Enter city : ");
+                        System.out.println("Enter State : ");
                         String newState = scan.next();
-                        person.state = newState;
+                        person.setState(newState);
                         break;
                     case 6:
                         System.out.println("Enter zip : ");
                         int newZip = scan.nextInt();
-                        person.zip = newZip;
+                        person.setZip(newZip);
                         break;
                     case 7:
                         System.out.println("Enter phone Number : ");
                         long new_phoneNumber = scan.nextLong();
-                        person.phone_number = new_phoneNumber;
+                        person.setPhone_number(new_phoneNumber);
                         break;
                     case 8:
                         System.out.println("Enter email : ");
                         String new_email = scan.next();
-                        person.email = new_email;
+                        person.setEmail(new_email);
                         break;
                     default:
                         System.out.println("invalid choice");
@@ -104,7 +111,10 @@ public class ContactDetailOperation {
             System.out.println(enteredName + " Not Found!");
         }
     }
-    //contact delete method to delete the contact
+
+    /**
+     * contact delete method to delete the contact
+     */
     public void deleteContact() {
         System.out.println("Enter name wants to delete:");
         String firstName = scan.next();
@@ -120,7 +130,20 @@ public class ContactDetailOperation {
         }
     }
 
-    //------------------------Adding address book-----------------------------------//
+    /**
+     * check duplicate contact in Address book if it is find will show the result
+     */
+    public static void checkDuplicate() {
+        Set<String> ContactSet = new HashSet<>();
+        Set<ContactPerson> newSet = contact.stream().filter(n -> !ContactSet.add(n.getFirst_name())).collect(Collectors.toSet());
+        for (ContactPerson contact : newSet) {
+            System.out.println("The Duplicate Contact is: " + contact.getFirst_name() + " " + contact.getLast_name());
+        }
+    }
+
+    /**
+     * Adding different address book
+     */
     public  void addAddressbook() {
         boolean isFlag = true;
         while (isFlag) {
@@ -136,8 +159,8 @@ public class ContactDetailOperation {
                     System.out.println("-----------------------------");
                     break;
                 case 2:
-                     editContact();
-                     showDetails();
+                    editContact();
+                    showDetails();
                     System.out.println("Contact edited Successfully");
                     System.out.println("-----------------------------");
                     break;
@@ -150,6 +173,7 @@ public class ContactDetailOperation {
                 case 4:
                     isFlag = false;
                     System.out.println("Exit");
+                    break;
                 default:
                     System.out.println("Please Enter Valid Choice:");
                     break;
@@ -157,8 +181,4 @@ public class ContactDetailOperation {
         }
     }
 }
-
-
-
-
 

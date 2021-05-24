@@ -1,23 +1,22 @@
 package com.addressbook;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 import static com.addressbook.ContactDetailOperation.contact;
 
 public class AddressBookMain {
     //Add an arraylist of contact person to Hashmap AddressBook
-    public static Map<String, ArrayList<ContactPerson>> addressBookDetail = new HashMap<String, ArrayList<ContactPerson>>();
+    public static Map<String, ArrayList<ContactPerson>> addressBookDetail = new HashMap<>();
     static ContactDetailOperation contactDetail = new ContactDetailOperation();//object of ContactDetailOperation class is created
     public static Scanner scan = new Scanner(System.in);
 
-    //------------------------Main Method-----------------------------------//
+    /**
+     * main
+     * @param args
+     */
     public static void main(String args[]) {
         System.out.println("!!!Welcome to Address Book Program!!!");
         boolean flag = true;
         while (flag) {
-            System.out.println("1.Add new Address Book \n 2.Exit");
+            System.out.println("1.Add new Address Book \n 2.Check Duplicate Entry \n 3.Exit");
             System.out.println("Enter your choice");
             int choice = scan.nextInt();
             switch (choice) {
@@ -35,11 +34,17 @@ public class AddressBookMain {
                         break;
                     }
                 case 2:
+                    for (Map.Entry<String, ArrayList<ContactPerson>> entry : addressBookDetail.entrySet()) {
+                        ArrayList<ContactPerson> value = entry.getValue();
+                        System.out.println("Address Book Name: " + entry.getKey());
+                        contactDetail.value.checkDuplicate();
+                        break;
+                    }
+                case 3:
                     flag = false;
                     System.out.println("Exit");
                     break;
             }
         }
-
     }
 }
