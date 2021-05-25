@@ -108,9 +108,18 @@ public class ContactPerson {
      * It is overridden method that will print the details of private variables
      * @return
      */
+    @Override
     public String toString() {
-        System.out.println();
-        return "ContactPerson{" + "first_name='" + first_name + '\'' + ", last_name='" + last_name + '\'' + ", address='" + address + '\'' + ", city='" + city + '\'' + ", state='" + state + '\'' + ", zip=" + zip + ", phone_number=" + phone_number + ", email='" + email + '\'' + '}';
+        return "ContactPerson{" +
+                "first_name='" + first_name + '\'' +
+                ", last_name='" + last_name + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zip=" + zip +
+                ", phone_number=" + phone_number +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
 

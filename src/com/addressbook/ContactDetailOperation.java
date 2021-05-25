@@ -2,6 +2,8 @@ package com.addressbook;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static com.addressbook.AddressBookMain.addressBookDetail;
+
 public class ContactDetailOperation {
     //add contact in arraylist
     public static ArrayList<ContactPerson> contact = new ArrayList<ContactPerson>();
@@ -127,6 +129,8 @@ public class ContactDetailOperation {
         }
         if (flag == false) {
             System.out.println(firstName+"Name not found");
+        }else {
+            System.out.println("Contact Deleted");
         }
     }
 
@@ -142,42 +146,23 @@ public class ContactDetailOperation {
     }
 
     /**
-     * Adding different address book
+     * Search person by city and gives the firstname nad lastname
+     * @param cityName
      */
-    public  void addAddressbook() {
-        boolean isFlag = true;
-        while (isFlag) {
-            System.out.println("Address Book Menu!!");
-            System.out.println("1.Add contact. \n 2.Edit contact. \n 3.Delete Contact \n 4.Exit");//choices for operation
-            System.out.print("enter choice:");
-            int option = scan.nextInt();
-            switch (option) {
-                case 1:
-                    addContact();
-                    showDetails();
-                    System.out.println("Contact Added Successfully!");
-                    System.out.println("-----------------------------");
-                    break;
-                case 2:
-                    editContact();
-                    showDetails();
-                    System.out.println("Contact edited Successfully");
-                    System.out.println("-----------------------------");
-                    break;
-                case 3:
-                    deleteContact();
-                    showDetails();
-                    System.out.println("Contact Deleted Successfully");
-                    System.out.println("-----------------------------");
-                    break;
-                case 4:
-                    isFlag = false;
-                    System.out.println("Exit");
-                    break;
-                default:
-                    System.out.println("Please Enter Valid Choice:");
-                    break;
-            }
+    public void searchPersonByCity(String cityName) {
+        for (Map.Entry<String, ArrayList<ContactPerson>> entry : addressBookDetail.entrySet()) {
+            System.out.println("The Address Book: "+entry.getKey());
+            //getPersonNameByCity(cityName);
+        }
+    }
+    /**
+     * Search person by State and gives the firstname and lastname
+     * @param stateName
+     */
+    public void searchPersonByState(String stateName) {
+        for (Map.Entry<String, ArrayList<ContactPerson>> entry : addressBookDetail.entrySet()) {
+            System.out.println("The Address Book: "+entry.getKey());
+            //getPersonNameByState(stateName);
         }
     }
 }
