@@ -109,6 +109,8 @@ public class ContactDetailOperation {
         }
         if (flag == false) {
             System.out.println(enteredName + " Not Found!");
+        }else{
+            System.out.println("Contact Edited Successfully");
         }
     }
 
@@ -127,6 +129,8 @@ public class ContactDetailOperation {
         }
         if (flag == false) {
             System.out.println(firstName+"Name not found");
+        }else{
+            System.out.println("Contact Deleted successfully");
         }
     }
 
@@ -161,13 +165,11 @@ public class ContactDetailOperation {
                 case 2:
                     editContact();
                     showDetails();
-                    System.out.println("Contact edited Successfully");
                     System.out.println("-----------------------------");
                     break;
                 case 3:
                     deleteContact();
                     showDetails();
-                    System.out.println("Contact Deleted Successfully");
                     System.out.println("-----------------------------");
                     break;
                 case 4:

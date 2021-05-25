@@ -8,6 +8,7 @@ public class AddressBookMain {
     static ContactDetailOperation contactDetail = new ContactDetailOperation();//object of ContactDetailOperation class is created
     public static Scanner scan = new Scanner(System.in);
 
+
     /**
      * main
      * @param args
@@ -29,13 +30,13 @@ public class AddressBookMain {
                         addressBookDetail.put(addBookName, contact);
                         contactDetail.addAddressbook();
                         for (Map.Entry<String, ArrayList<ContactPerson>> Entry : addressBookDetail.entrySet()) {
-                            System.out.println("Address Book Name:>" + Entry.getKey() + "==>" + "Contact Details:>" + Entry.getValue() + "==>");
+                            System.out.println("Address Book Name:>" + Entry.getKey() + "==>" + "Contact Details:>" + Entry.getValue());
                         }
                         break;
                     }
                 case 2:
-                    for (Map.Entry<String, ArrayList<ContactPerson>> entry : addressBookDetail.entrySet()) {
-                        ArrayList<ContactPerson> value = entry.getValue();
+                    for (Map.Entry<String,ArrayList<ContactPerson>> entry : addressBookDetail.entrySet()) {
+                       ArrayList<ContactPerson> value =entry.getValue();
                         System.out.println("Address Book Name: " + entry.getKey());
                         contactDetail.value.checkDuplicate();
                         break;
