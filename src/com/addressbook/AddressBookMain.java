@@ -76,13 +76,11 @@ public class AddressBookMain {
                 case 2:
                     contactDetail.editContact();
                     contactDetail.showDetails();
-                    System.out.println("Contact edited Successfully");
                     System.out.println("-----------------------------");
                     break;
                 case 3:
                     contactDetail.deleteContact();
                     contactDetail.showDetails();
-                    System.out.println("Contact Deleted Successfully");
                     System.out.println("-----------------------------");
                     break;
                 case 4:

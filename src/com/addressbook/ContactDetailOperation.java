@@ -111,6 +111,8 @@ public class ContactDetailOperation {
         }
         if (flag == false) {
             System.out.println(enteredName + " Not Found!");
+        }else{
+            System.out.println("Contact edited successfully");
         }
     }
 
@@ -130,7 +132,7 @@ public class ContactDetailOperation {
         if (flag == false) {
             System.out.println(firstName+"Name not found");
         }else {
-            System.out.println("Contact Deleted");
+            System.out.println("Contact Deleted successfully");
         }
     }
 
@@ -152,7 +154,19 @@ public class ContactDetailOperation {
     public void searchPersonByCity(String cityName) {
         for (Map.Entry<String, ArrayList<ContactPerson>> entry : addressBookDetail.entrySet()) {
             System.out.println("The Address Book: "+entry.getKey());
-            //getPersonNameByCity(cityName);
+            getPersonNameByCity(cityName);
+        }
+    }
+
+    /**
+     * Getting first name and lastname according to city name
+     * @param cityName
+     */
+    public void getPersonNameByCity(String cityName) {
+        List<ContactPerson> list  = contact.stream().filter(person ->person.getCity().equals(cityName)).collect(Collectors.toList());
+        for(ContactPerson contact: list){
+            System.out.println("First Name: "+contact.getFirst_name());
+            System.out.println("Last Name: "+contact.getLast_name());
         }
     }
     /**
@@ -162,7 +176,19 @@ public class ContactDetailOperation {
     public void searchPersonByState(String stateName) {
         for (Map.Entry<String, ArrayList<ContactPerson>> entry : addressBookDetail.entrySet()) {
             System.out.println("The Address Book: "+entry.getKey());
-            //getPersonNameByState(stateName);
+            getPersonNameByState(stateName);
+        }
+    }
+
+    /**
+     * Getting first name and lastname according to State name
+     * @param stateName
+     */
+    private void getPersonNameByState(String stateName) {
+        List<ContactPerson>list=contact.stream().filter(person->person.getState().equals(stateName)).collect(Collectors.toList());
+        for (ContactPerson contact:list){
+            System.out.println("First Name: "+contact.getFirst_name());
+            System.out.println("Last Name: "+contact.getLast_name());
         }
     }
 }
