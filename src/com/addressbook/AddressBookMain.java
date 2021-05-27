@@ -74,6 +74,9 @@ public class AddressBookMain {
                     contactDetail.countByState(state);
                     break;
                 case 9:
+                    contactDetail.sortContactByName();
+                    break;
+                case 10:
                     System.out.println("Exit");
                     flag = false;
                     break;
