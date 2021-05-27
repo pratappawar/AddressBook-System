@@ -15,7 +15,9 @@ public class AddressBookMain {
         boolean flag = true;//declaring flag
         while (flag) {
             System.out.println("1.Add new Address Book \n 2.Check Duplicate Entry \n 3.Search person by city \n " +
-                    "4. Search Person by State \n 5.View person by State\n 6.View person by city\n 7.Exit");
+                               "4. Search Person by State \n 5.View person by State\n " +
+                               "6.View person by city\n 7.Count people by City: " +
+                               "\n8.Count people by state\n 9.Exit");
             System.out.println("Enter your choice");
             int choice = scan.nextInt();
             switch (choice) {
@@ -62,12 +64,22 @@ public class AddressBookMain {
                     contactDetail.viewPersonByCity(city_Name);
                     break;
                 case 7:
+                    System.out.println("Enter the name of City:");
+                    String city=scan.next();
+                    contactDetail.countByCity(city);
+                    break;
+                case 8:
+                    System.out.println("Enter the name of State:");
+                    String state=scan.next();
+                    contactDetail.countByState(state);
+                    break;
+                case 9:
+                    System.out.println("Exit");
                     flag = false;
                     break;
             }
         }
     }
-
     /**
      * Adding different address book
      */

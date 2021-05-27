@@ -193,7 +193,6 @@ public class ContactDetailOperation {
 
     /**
      * Getting first name and lastname according to city name
-     *
      * @param cityName
      */
     public void searchPersonByCity(String cityName) {
@@ -206,7 +205,6 @@ public class ContactDetailOperation {
 
     /**
      * Search person by State and gives the firstname and lastname
-     *
      * @param stateName
      */
     public void searchPersonByState(String stateName) {
@@ -218,8 +216,7 @@ public class ContactDetailOperation {
     }
 
     /**
-     * viw
-     *
+     * view person by city
      * @param cityName
      */
     public void viewPersonByCity(String cityName) {
@@ -234,6 +231,10 @@ public class ContactDetailOperation {
         }
     }
 
+    /**
+     * view person by state
+     * @param stateName
+     */
     public void viewPersonByState(String stateName) {
         for (Map.Entry<String, ContactDetailOperation> entry : AddressBookMain.addressBookDetail.entrySet()) {
             ContactDetailOperation value = entry.getValue();
@@ -243,6 +244,40 @@ public class ContactDetailOperation {
             for (ContactPerson contact : contacts) {
                 System.out.println("First Name: " + contact.getFirst_name() + " Last Name: " + contact.getLast_name());
             }
+        }
+    }
+
+    /**
+     * Search Result will show count by city
+     * @param city
+     */
+    public void countByCity(String city) {
+        int personCountInCity=0;
+        for (Map.Entry<String,ContactDetailOperation> entry:AddressBookMain.addressBookDetail.entrySet()){
+            for (int i=0;i<(entry.getValue()).contact.size();i++){
+                ContactPerson personCount= entry.getValue().contact.get(i);
+                if (city.equals(personCount.getCity())){
+                    personCountInCity++;
+                }
+            }
+            System.out.println("Total Count of People in "+city+"-->"+personCountInCity);
+        }
+    }
+
+    /**
+     * Search Result will show count by state
+     * @param state
+     */
+    public void countByState(String state) {
+        int personCountInState=0;
+        for (Map.Entry<String,ContactDetailOperation> entry:AddressBookMain.addressBookDetail.entrySet()){
+            for (int i=0;i<(entry.getValue()).contact.size();i++){
+                ContactPerson personCount= entry.getValue().contact.get(i);
+                if (state.equals(personCount.getState())){
+                    personCountInState++;
+                }
+            }
+            System.out.println("Total Count of People in State "+state+"-->"+personCountInState);
         }
     }
 }
