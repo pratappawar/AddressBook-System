@@ -1,55 +1,68 @@
 package com.addressbook;
+
 import java.util.*;
-import static com.addressbook.ContactDetailOperation.contact;
 
 public class AddressBookMain {
-    //Add an arraylist of contact person to Hashmap AddressBook
-    public static Map<String, ArrayList<ContactPerson>> addressBookDetail = new HashMap<>();
-    static ContactDetailOperation contactDetail = new ContactDetailOperation();//object of ContactDetailOperation class is created
+    public static Map<String, ContactDetailOperation> addressBookDetail = new HashMap<>();
+    public static ContactDetailOperation contactDetail = new ContactDetailOperation();//object of ContactDetailOperation class is created
     public static Scanner scan = new Scanner(System.in);
 
     /**
-     * main
-     * @param args
+     * main class to store new address book or check if the address book already there
      */
-    public static void main(String args[]) {
-        System.out.println("!!!Welcome to Address Book Program!!!");
-        boolean flag = true;
+    public static void main(String[] args) {
+        System.out.println("Welcome to Address Book System");
+        boolean flag = true;//declaring flag
         while (flag) {
-            System.out.println("1.Add new Address Book \n 2.Check Duplicate Entry \n 3.Search person by city \n 4. Search Person by State \n 5.Exit");
+            System.out.println("1.Add new Address Book \n 2.Check Duplicate Entry \n 3.Search person by city \n " +
+                    "4. Search Person by State \n 5.View person by State\n 6.View person by city\n 7.Exit");
             System.out.println("Enter your choice");
             int choice = scan.nextInt();
             switch (choice) {
                 case 1:
-                    System.out.println("Enter the Name of Address book");
-                    String addBookName = scan.next();
-                    if (addressBookDetail.containsKey(addBookName)) {
-                        System.out.println("Address Book already Exist!!");
+                    System.out.println("Enter the name of the address book");
+                    String addressBookName = scan.next();//getting address book name from user
+                    if (addressBookDetail.containsKey(addressBookName)) {
+                        System.out.println("this address book already exists ");
+                        break;
                     } else {
-                        //addressBookDetail.put(addBookName, contact);
-                        addAddressBook(addBookName);
+                        addAddressbook(addressBookName);//storing address book in map
+                        for (Map.Entry<String, ContactDetailOperation> entry : addressBookDetail.entrySet()) {
+                            System.out.println("Address Book Name:>" + entry.getKey() + "==>" + "Contact Details:>" + entry.getValue());
+                        }
                         break;
                     }
                 case 2:
-                    for (Map.Entry<String, ArrayList<ContactPerson>> entry : addressBookDetail.entrySet()) {
-                        ArrayList<ContactPerson> value = entry.getValue();
+                    for (Map.Entry<String, ContactDetailOperation> entry : addressBookDetail.entrySet()) {
+                        ContactDetailOperation value = entry.getValue();
+                        System.out.println(value);
                         System.out.println("Address Book Name: " + entry.getKey());
-                        contactDetail.checkDuplicate();
+                        value.checkDuplicate();
+                        break;
                     }
-                    break;
                 case 3:
                     System.out.println("Enter Name of City: ");
                     String cityName = scan.next();
                     contactDetail.searchPersonByCity(cityName);
                     break;
-                case  4:
+                case 4:
                     System.out.println("Enter Name of State: ");
                     String stateName = scan.next();
                     contactDetail.searchPersonByState(stateName);
-
+                    break;
                 case 5:
+                    System.out.println("Enter Name of State: ");
+                    String state_Name = scan.next();
+                    contactDetail.viewPersonByState(state_Name);
+                    break;
+
+                case 6:
+                    System.out.println("Enter Name of City: ");
+                    String city_Name = scan.next();
+                    contactDetail.viewPersonByCity(city_Name);
+                    break;
+                case 7:
                     flag = false;
-                    System.out.println("Exit");
                     break;
             }
         }
@@ -57,9 +70,8 @@ public class AddressBookMain {
 
     /**
      * Adding different address book
-     * @param addBookName
      */
-    public static void addAddressBook(String addBookName) {
+    public static void addAddressbook(String addBookName) {
         boolean isFlag = true;
         while (isFlag) {
             System.out.println("Address Book Menu!!");
@@ -92,7 +104,7 @@ public class AddressBookMain {
                     break;
             }
         }
-        addressBookDetail.put(addBookName,contact);
-        System.out.println(addBookName+" =>"+"Address Book Added Successfully");
+        addressBookDetail.put(addBookName, contactDetail);
+        System.out.println("Address book added successfully");
     }
 }

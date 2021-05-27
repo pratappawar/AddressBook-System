@@ -1,6 +1,9 @@
 package com.addressbook;
 
-public class ContactPerson {
+import java.util.ArrayList;
+import java.util.function.IntFunction;
+
+public class ContactPerson extends ArrayList<ContactPerson> {
     /**
      * class properties
      */
